@@ -13,3 +13,7 @@ example app to deploy.
 
 # Tutorial
 See our [Running Django in the App Engine Standard Environment](https://cloud.google.com/python/django/appengine) tutorial for instructions for setting up and deploying this sample application.
+
+# Custom Setup
+I am using postgresql instead of mysql
+Create postgresql instance on google sql
