@@ -54,7 +54,7 @@
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
         <div class="container">
           <a class="navbar-brand" href="index.html">
-            <img src="{% static 'img/logo.png' %}" class="logo" alt="">
+            <img src="{% static 'images/logo.png' %}" class="logo" alt="">
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
             <span class="navbar-toggler-icon"></span>
@@ -90,6 +90,10 @@
     
     {% block content %}
     {% endblock %}
+    <footer id="main-footer" class="py-4 bg-primary text-white text-center">
+      Copyright &copy;
+      <span class="year"></span> BT Real Estate
+    </footer>
 
     <script src="{% static 'js/lightbox.min.js'%} "></script>
    
