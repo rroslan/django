@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 {% load bootstrap4 %}
 {# Load CSS and JavaScript #}
 {% bootstrap_css %}
@@ -5,6 +6,8 @@
 
 {# Display django.contrib.messages as Bootstrap alerts #}
 {% bootstrap_messages %}
+
+{% block content %}
 
 <h1>{{ question.question_text }}</h1>
 
@@ -19,4 +22,4 @@
 <input type="submit" value="Vote">
 </form>
 
-
+{%endblock %}
