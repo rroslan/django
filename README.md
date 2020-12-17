@@ -27,17 +27,17 @@ gsutil defacl set public-read gs://<your-gcs-bucket> for public access
 
 python manage.py collectstatic
 
-gsutil rsync -R static/ gs://<your-gcs-bucket>/static
+gsutil rsync -R static/ gs://your-gcs-bucket/static
 
 STATIC_URL = 
-https://storage.googleapis.com/<your-gcs-bucket>/static/
+https://storage.googleapis.com/your-gcs-bucket/static/
 
-gsutil defacl set public-read gs://<your-gcs-bucket>
+gsutil defacl set public-read gs://your-gcs-bucket
 
-gsutil cors set cors.config.json gs://<your-gcs-bucket>
+gsutil cors set cors.config.json gs://your-gcs-bucket
 
-gsutil acl ch -u AllUsers:R gs://<your-gcs-bucket>
+gsutil acl ch -u AllUsers:R gs://your-gcs-bucket
 
-gsutil iam ch allUsers:objectViewer gs://<your-gcs-bucket>
+gsutil iam ch allUsers:objectViewer gs://your-gcs-bucket
 
 gcloud app deploy
