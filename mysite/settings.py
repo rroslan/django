@@ -30,7 +30,8 @@ DEBUG = True
 # have ALLOWED_HOSTS = ['*'] when the app is deployed. If you deploy a Django
 # app not on App Engine, make sure to set an appropriate host here.
 # See https://docs.djangoproject.com/en/2.1/ref/settings/
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://storage.googleapis.com/django-buclet/static/',
+'127.0.0.1']
 
 
 # Application definition
@@ -38,6 +39,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     
     'bootstrap4',
+    'corsheaders',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,6 +52,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -57,12 +60,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
+
 ROOT_URLCONF = 'mysite.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'static/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -166,8 +171,10 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# STATIC_URL = 'https://storage.googleapis.com/django-buclet/static/'
-STATIC_URL = 'static/'
+STATIC_URL = 'https://storage.googleapis.com/django-buclet/static/'
+# STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'mysite/static')
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
