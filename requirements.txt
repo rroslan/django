@@ -1,3 +1,7 @@
 Django==3.1.4
 psycopg2-binary
 django-bootstrap4
+django-gcloud-storage
+django-storages
+Pillow==8.0.1
+django-cors-headers
