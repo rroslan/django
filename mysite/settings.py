@@ -30,8 +30,7 @@ DEBUG = True
 # have ALLOWED_HOSTS = ['*'] when the app is deployed. If you deploy a Django
 # app not on App Engine, make sure to set an appropriate host here.
 # See https://docs.djangoproject.com/en/2.1/ref/settings/
-ALLOWED_HOSTS = ['https://storage.googleapis.com/django-buclet/static/',
-'127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
