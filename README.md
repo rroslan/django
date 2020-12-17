@@ -18,3 +18,26 @@ See our [Running Django in the App Engine Standard Environment](https://cloud.go
 I am using postgresql instead of mysql
 
 Create postgresql instance on google sql
+
+Create a database on postgresql
+
+Edit settings.py to your setup
+
+gsutil defacl set public-read gs://<your-gcs-bucket> for public access
+
+python manage.py collectstatic
+
+gsutil rsync -R static/ gs://<your-gcs-bucket>/static
+
+STATIC_URL = 
+https://storage.googleapis.com/<your-gcs-bucket>/static/
+
+gsutil defacl set public-read gs://<your-gcs-bucket>
+
+gsutil cors set cors.config.json gs://<your-gcs-bucket>
+
+gsutil acl ch -u AllUsers:R gs://<your-gcs-bucket>
+
+gsutil iam ch allUsers:objectViewer gs://<your-gcs-bucket>
+
+gcloud app deploy
