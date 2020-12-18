@@ -5,4 +5,4 @@
 *.pyc
 __pycache__/
 /media
-mysite*.env
+mysite/.env
