@@ -2,5 +2,5 @@
 /bin
 /include
 /lib
-
+mysite*__pycache__
 /media
