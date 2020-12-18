@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import environ
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,10 +22,22 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # Update the secret key to a value of your own before deploying the app.
-SECRET_KEY = 'lldtg$9(wi49j_hpv8nnqlh!cj7kmbwq0$rj7vy(b(b30vlyzj'
+#SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#env_file=os.path.join(BASE_DIR, '.env')
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+# reading .env file
+environ.Env.read_env()
+
+DEBUG = env('DEBUG')
+...
+SECRET_KEY = env('SECRET_KEY')
+
+DATABASE_URL = env('DATABASE_URL')
 
 # SECURITY WARNING: App Engine's security features ensure that it is safe to
 # have ALLOWED_HOSTS = ['*'] when the app is deployed. If you deploy a Django
@@ -96,7 +109,8 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 if os.getenv('GAE_APPLICATION', None):
     # Running on production App Engine, so connect to Google Cloud SQL using
     # the unix socket at /cloudsql/<your-cloudsql-connection string>
-    DATABASES = {
+    DATABASE_URL = env('DATABASE_URL')
+    """ DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'HOST': '/cloudsql/django-reti:asia-southeast1:django-pg',
@@ -104,7 +118,7 @@ if os.getenv('GAE_APPLICATION', None):
             'PASSWORD': 'postgres',
             'NAME': 'reti',
         }
-    }
+    } """
 else:
     # Running locally so connect to either a local MySQL instance or connect to
     # Cloud SQL via the proxy. To start the proxy via command line:
@@ -112,7 +126,8 @@ else:
     #     $ cloud_sql_proxy -instances=[INSTANCE_CONNECTION_NAME]=tcp:3306
     #
     # See https://cloud.google.com/sql/docs/mysql-connect-proxy
-    DATABASES = {
+    LOCAL_DATABASE_URL=env('LOCAL_DATABASE_URL')
+    """ DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'HOST': '127.0.0.1',
@@ -121,7 +136,7 @@ else:
             'USER': 'postgres',
             'PASSWORD': 'postgres',
         }
-    }
+    } """
 # [END db_setup]
 
 # Use a in-memory sqlite3 database when testing in CI systems
