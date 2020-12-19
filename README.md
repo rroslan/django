@@ -15,6 +15,21 @@ example app to deploy.
 See our [Running Django in the App Engine Standard Environment](https://cloud.google.com/python/django/appengine) tutorial for instructions for setting up and deploying this sample application.
 
 # Custom Setup
+
+create virtual env  virtualenv -p /usr/bin/python3.8
+
+goto virtual env source bin/activate
+
+code .
+
+In your vscode click any python file and choose the python interpreter by clicking ctrl shift + p.
+
+make sure you choose the inperpreter in bin/python3.8, vscode will create .vscode folder and the settings.
+
+Create .env from .env-example and edit to your secret key and database url
+
+python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+
 I am using postgresql instead of mysql
 
 Create postgresql instance on google sql
