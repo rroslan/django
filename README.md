@@ -16,7 +16,7 @@ See our [Running Django in the App Engine Standard Environment](https://cloud.go
 
 # Custom Setup
 
-create virtual env  virtualenv -p /usr/bin/python3.8
+create virtual env  virtualenv -p /usr/bin/python3.8 . Don't foget the dot
 
 goto virtual env source bin/activate
 
